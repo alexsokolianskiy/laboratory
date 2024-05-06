@@ -20,4 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('build', [ApiController::class, 'build']);
+Route::group([
+    'middleware' => ['cors'],
+], function ($router) {
+     Route::post('build', [ApiController::class, 'build']);
+});
