@@ -8,6 +8,8 @@ services:
     container_name: nextjs
     volumes:
       - ./client:/app
+      - /app/node_modules
+      - /app/.next
     ports:
       - "3000:3000"
     depends_on:
