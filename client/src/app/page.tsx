@@ -5,6 +5,7 @@ import AceEditor from "react-ace";
 import { useState, useEffect } from 'react';
 import { AVRRunner } from './services/execute';
 import classNames from 'classnames';
+import "@wokwi/elements";
 
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/theme-monokai";
@@ -112,22 +113,29 @@ export default function () {
 
   return (
     <main className={styles.main}>
-      <AceEditor
-        value={code}
-        mode="c_cpp"
-        theme="monokai"
-        name="UNIQUE_ID_OF_DIV"
-        onChange={onChange}
-        editorProps={{ $blockScrolling: true }}
-      />
-      <button onClick={handleBuildAndUpload}>Build and Upload</button>
+      <div className={styles.container}>
+        <div className={styles.column}>
+            <AceEditor
+            value={code}
+            mode="c_cpp"
+            theme="monokai"
+            name="UNIQUE_ID_OF_DIV"
+            onChange={onChange}
+            editorProps={{ $blockScrolling: true }}
+          />
+          <button onClick={handleBuildAndUpload}>Build and Upload</button>
+        </div>
+        <div className={styles.column}>
+    
+        {leds.map((led) => (
 
-      {leds.map((led) => (
-        <span key={led.id} color={led.color}>LED[{led.id}]
-        <div className={led.value ? calculatedClassName(led.color): ''}> {led.value.toString()}</div>
-        </span>
-      ))}
+<wokwi-led key={led.id} color={led.color} label={`LED-${led.id}`}  value={led.value ? true : undefined} ></wokwi-led>
+))}
 
+        </div>
+      </div>
+     
+   
       <div>
         <h2>OUTPUT</h2>
         <h3>Status: {status} </h3>

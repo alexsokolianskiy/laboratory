@@ -4,7 +4,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 100%;  /* Make the container fill the entire width of the page */
+}
+
+.column {
+  flex: 1;  /* Make both columns equally sized */
+  padding: 1rem;  /* Add some padding for visual separation */
 }
 
 .red {
